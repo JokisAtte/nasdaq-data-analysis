@@ -4,6 +4,7 @@ def main():
     data = read_data.read_data('HistoricalQuotes.csv')
     choises = {1: find_longest_bullish_streak.find_longest_steak}
     while True:
+        print(" ")
         print("-----------------------------------------------------------")
         print("Available actions: ")
         print(" -Find longest bullish streak (1)")
@@ -23,7 +24,6 @@ def main():
                 print("Bye bye")
                 break
             else:
-                print(" ")
                 print("ERROR: Bad input. Select action by typing its number represented in parentheses")
                 print(" ")
 

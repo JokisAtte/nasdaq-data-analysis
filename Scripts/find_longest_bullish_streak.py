@@ -17,13 +17,18 @@ def find_longest_steak(data):
     if start_date == "aa":  # for testing
         start_date = "01/20/2021"
         end_date = "12/16/2020"
-    data_slice = get_slice(data, start_date, end_date)
-    longest = recursive(data_slice)
-    print(f"In Apple stock historical data the Close/Last price increased {longest}"
-          f" days in a row between {end_date} and {start_date}.")
-    return longest
+    if dates_in_data.dates_in_data(data, start_date, end_date):
+        data_slice = get_slice(data, start_date, end_date)
+        longest = count_longest_streak(data_slice)
+        print(" ")
+        print("Result:")
+        print(f"In Apple stock historical data the Close/Last price increased {longest}"
+              f" days in a row between {end_date} and {start_date}.")
+        return longest
+    else:
+        print("Dates not found")
 
-def recursive(data, index=0, streak=0, longest=0):
+def count_longest_streak(data, index=0, streak=0, longest=0):
     if index != len(data)-1:
         key_N = list(data.keys())[index]   # Date for day N
         key_Next = list(data.keys())[index + 1]   # Date for previous day (day N-1)
@@ -36,8 +41,7 @@ def recursive(data, index=0, streak=0, longest=0):
                 longest = streak
         else:
             streak = 0
-        longest = recursive(data, index, streak, longest)
+        longest = count_longest_streak(data, index, streak, longest)
         return longest
     else:
         return longest
-
