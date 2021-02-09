@@ -1,4 +1,4 @@
-from Scripts import read_data, find_longest_bullish_streak
+from Scripts import read_data, find_longest_bullish_streak, get_price_change_per_day
 
 def main():
     data = read_data.read_data('HistoricalQuotes.csv')
@@ -8,6 +8,7 @@ def main():
         print("-----------------------------------------------------------")
         print("Available actions: ")
         print(" -Find longest bullish streak (1)")
+        print(" -Highest volumes and price changes (2)")
         print("-----------------------------------------------------------")
 
         print("Select action by typing in its' number. Quit by typing q")
@@ -17,6 +18,8 @@ def main():
             action = int(user_input)
             if action == 1:
                 find_longest_bullish_streak.find_longest_steak(data)
+            if action == 2:
+                get_price_change_per_day.get_price_change_per_day(data)
             if action == "q":
                 break
         except ValueError:
@@ -26,11 +29,5 @@ def main():
             else:
                 print("ERROR: Bad input. Select action by typing its number represented in parentheses")
                 print(" ")
-
-
-
-
-    #longest = find_longest_bullish_streak.find_longest_steak(data, "01/20/2021", "10/23/2020")
-
 
 main()

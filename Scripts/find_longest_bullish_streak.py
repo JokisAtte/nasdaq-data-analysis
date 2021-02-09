@@ -1,24 +1,9 @@
-from Utils import dates_in_data
-
-def get_slice(data,start_date, end_date):
-    slice = {}
-    in_range = False
-    for i in data:
-        if i == start_date:
-            in_range = True
-        if in_range == True:
-            slice[i] = data[i]
-        if i == end_date:
-            return slice
+from Utils import dates_in_data, get_slice, ask_date_range
 
 def find_longest_steak(data):
-    start_date = input("Enter start date (mm/dd/yyyy)")
-    end_date = input("Enter end date (mm/dd/yyyy)")
-    if start_date == "aa":  # for testing
-        start_date = "01/20/2021"
-        end_date = "12/16/2020"
+    start_date, end_date = ask_date_range.ask_date_range()
     if dates_in_data.dates_in_data(data, start_date, end_date):
-        data_slice = get_slice(data, start_date, end_date)
+        data_slice = get_slice.get_slice(data, start_date, end_date)
         longest = count_longest_streak(data_slice)
         print(" ")
         print("Result:")
