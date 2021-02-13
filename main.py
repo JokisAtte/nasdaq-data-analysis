@@ -18,10 +18,9 @@ def main():
             action = int(user_input)
             if action == 1:
                 find_longest_bullish_streak.find_longest_steak(data)
+                get_price_change_per_day.get_price_change_per_day(data)
             if action == 2:
                 get_price_change_per_day.get_price_change_per_day(data)
-            if action == "q":
-                break
         except ValueError:
             if user_input == "q":
                 print("Bye bye")
